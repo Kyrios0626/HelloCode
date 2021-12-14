@@ -5,39 +5,40 @@
 1. 进入[git官网](https://git-scm.com/downloads)下载相应版本.  
 2. 打开应用程序安装,除了安装路径一路默认到最后就行了.  
 3. 打开Git Bash 输入git 看到一大堆输出 证明安装完成  
-```
-usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
-           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
-           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
-           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
-           [--super-prefix=<path>] [--config-env=<name>=<envvar>]
-           <command> [<args>]
-
-These are common Git commands used in various situations:
-
-start a working area (see also: git help tutorial)
-   clone     Clone a repository into a new directory
-   init      Create an empty Git repository or reinitialize an existing one
-
-.....
-
-collaborate (see also: git help workflows)
-   fetch     Download objects and refs from another repository
-   pull      Fetch from and integrate with another repository or a local branch
-   push      Update remote refs along with associated objects
-
-'git help -a' and 'git help -g' list available subcommands and some
-concept guides. See 'git help <command>' or 'git help <concept>'
-to read about a specific subcommand or concept.
-See 'git help git' for an overview of the system.
-
-```
+    ```
+    usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
+               [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+               [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+               [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+               [--super-prefix=<path>] [--config-env=<name>=<envvar>]
+               <command> [<args>]
+    
+    These are common Git commands used in various situations:
+    
+    start a working area (see also: git help tutorial)
+       clone     Clone a repository into a new directory
+       init      Create an empty Git repository or reinitialize an existing one
+    
+    .....
+    
+    collaborate (see also: git help workflows)
+       fetch     Download objects and refs from another repository
+       pull      Fetch from and integrate with another repository or a local branch
+       push      Update remote refs along with associated objects
+    
+    'git help -a' and 'git help -g' list available subcommands and some
+    concept guides. See 'git help <command>' or 'git help <concept>'
+    to read about a specific subcommand or concept.
+    See 'git help git' for an overview of the system.
+    
+    ```
 
 
 ## 2.Git使用
 
 接下来的操作是按照创建一个新的git项目来操作的  
 以下所有操作均在Git Bash下进行
+
 #### 1. 创建git仓库  
 1. **mkdir**并**cd** 文件夹(此文件夹之后将做为git仓库)
 2. **git status** 查看仓库状态
@@ -61,8 +62,8 @@ See 'git help git' for an overview of the system.
     nothing added to commit but untracked files present (use "git add" to track)
     ```
 #### 2. 创建身份识别  
-**git config user.email "354034186@qq.com"**  
-**git config user.name "Kyrios"**  
+- **git config user.email "354034186@qq.com"**  
+- **git config user.name "Kyrios"**  
 
     有时候会提示你没有认真身份,也就是需要你登录一下，确认你的身份，但是不要按照其提示输入，
     先输入命令git config user.name “username”，换行输入git config user.email “email”
@@ -70,14 +71,14 @@ See 'git help git' for an overview of the system.
     
     
 #### 3. 将一个或多个文件添加到暂存区(跟踪一个或多个文件)  
-**git add**  
+- **git add**  
 
     $ git add MarkDown学习指南.md
 
     如果什么都没有那就证明添加成功了,如果报错了注意文件后面是不是加空格了
     
-#### 4. 将暂存区的改动提交,git会永久保存这次提交  
-**git commit -m"提交信息"**  
+#### 4. 将暂存区的改动提交,git会永久保存这次提交    
+- **git commit -m"提交信息"**  
     
     $ git commit -m "将markdown文档提交git监管"
     [master (root-commit) 5fd5223] 将markdown文档提交git监管
@@ -158,22 +159,51 @@ See 'git help git' for an overview of the system.
     Already up to date.
     ```
 ## 3.远程相关操作   
-将git和github关联有两种方式
-1. **本地原有代码直接本地建仓库 关联到github监管**
-    1. 本地仓库关联远程仓库   
+1. 将git和github关联有两种方式
+    1. **本地原有代码直接本地建仓库 关联到github监管**  
         **git remote add origin `https://github.com/Kyrios0626/HelloCode.git`**   
         为本地仓库绑定远程仓库地址,远程仓库名为origin 
         ```
         $ git remote add origin https://github.com/Kyrios0626/HelloCode.git
-
         kyrio@DESKTOP-S9RF950 MINGW64 /E/Kyrios/code/hello_code (master)
         ```   
         *origin* 表示你自己给远程仓库起了个本地识别的名字,  
         以后git识别到origin就表示它是远程的hellow code仓库  
-        所以只要起的名字不同,本地仓库的代码可以同时链接不同的远程仓库,起不一样的名字就好了
+        所以只要起的名字不同,本地仓库的代码可以同时链接不同的远程仓库,起不一样的名就好了  
     
-    2. 提交本地代码到远程仓库  
-        **git push -u origin master**  
+    2. **本地没有代码,直接将远程代码克隆下来**  
+        **git clone https://github.com/Kyrios0626/HelloCode.git**  
+        克隆一个项目 注意:***克隆下来的是整个项目的文件夹,不用为其单独创建文件夹**  
+        ```
+        $ git clone https://github.com/Kyrios0626/HelloCode.git
+        Cloning into 'HelloCode'...
+        remote: Enumerating objects: 19, done.
+        remote: Counting objects: 100% (16/16), done.
+        remote: Compressing objects: 100% (14/14), done.
+        remote: Total 19 (delta 5), reused 9 (delta 2), pack-reused 3
+        Receiving objects: 100% (19/19), 12.84 KiB | 166.00 KiB/s, done.
+        Resolving deltas: 100% (5/5), done.
+        ```    
+    
+2. 拉取远程仓库代码  
+
+    1. **git pull origin 远程分支**  
+        拉取远程仓库对应分支的变化代码
+        ```
+        $ git pull origin main
+        From https://github.com/Kyrios0626/HelloCode
+         * branch            main       -> FETCH_HEAD
+        Already up to date.
+        ```
+        
+    2. **git pull**   
+        常规拉取代码操作  
+        ```
+        $ git pull
+        Already up to date.
+        ```    
+3. 提交本地代码到远程仓库  
+    1. **git push -u origin master**  
         将本地 ***当前*** 分支与远程 ***master*** 分支进行绑定,并推送代码  
         绑定之后,下次如果在推本地分支,可以直接使用git push 命令.   
         想要按照分支提交代码需要执行多次git push -u origin 分支名
@@ -208,7 +238,7 @@ See 'git help git' for an overview of the system.
             
         ***每次push操作前一定要pull!!! 养成好习惯!!!***    
         
-    3. 常规提交代码操作  
+    2. 常规提交代码操作  
         **git push**  
         提交代码  
         ```
@@ -222,36 +252,8 @@ See 'git help git' for an overview of the system.
         To https://github.com/Kyrios0626/HelloCode.git
            5fd5223..81b689c  master -> master
         ```
-    
-    4. 拉取远程仓库代码  
-        **git pull origin 远程分支**  
-        拉取远程仓库对应分支的变化代码
-        ```
-        $ git pull origin main
-        From https://github.com/Kyrios0626/HelloCode
-         * branch            main       -> FETCH_HEAD
-        Already up to date.
-        ```
-        
-    5. 常规拉取代码操作  
-        **git pull**  
-        提交代码  
-        ```
-        $ git pull
-        Already up to date.
-        ```
-    
-2. 本地没有代码,直接将远程代码克隆下来
 
-    
-    
- 
-    
-
-git clone 远程仓库地址  克隆一个项目    
-
-
-# tag标签
+## 4. tag标签
     
     tag是git版本库的一个标记，指向某个commit的指针。
     tag主要用于发布版本的管理，一个版本发布之后，我们可以为git打上 v.1.0.1 v.1.0.2 ...这样的标签。
