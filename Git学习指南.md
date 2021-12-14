@@ -121,7 +121,7 @@ See 'git help git' for an overview of the system.
     kyrio@DESKTOP-S9RF950 MINGW64 /e/Kyrios/code/hello_code (dev)
 
     ```
-3. **git checkout -b 分支名**   
+3. **git checkout -b dev**   
     创建一个名为dev的分支 并跳转到dev   
     ```
     $ git checkout -b dev
@@ -170,11 +170,13 @@ See 'git help git' for an overview of the system.
         ```   
         *origin* 表示你自己给远程仓库起了个本地识别的名字,  
         以后git识别到origin就表示它是远程的hellow code仓库  
+        所以只要起的名字不同,本地仓库的代码可以同时链接不同的远程仓库,起不一样的名字就好了
     
     2. 提交本地代码到远程仓库  
         **git push -u origin master**  
         将本地 ***当前*** 分支与远程 ***master*** 分支进行绑定,并推送代码  
-        绑定之后,下次如果在推本地分支,可以直接使用git push 命令.  
+        绑定之后,下次如果在推本地分支,可以直接使用git push 命令.   
+        想要按照分支提交代码需要执行多次git push -u origin 分支名
         ```
         $ git push -u origin master
         Enumerating objects: 3, done.
@@ -191,9 +193,54 @@ See 'git help git' for an overview of the system.
          * [new branch]      master -> master
         Branch 'master' set up to track remote branch 'master' from 'origin'.
         ```
+        *master* 代表你要提交的远程分支的名字  
+        没有分支会自动创建分支
+        
+        有时候会遇到已创建的本地仓库无法和已创建的远程仓库合并的问题:  
+        主要原因是:两个仓库为互相独立,虽然有一个空仓库,但是版本无关联就不能合并  
+        这时就需要使用`git pull origin main --allow-unrelated-histories` 命令,  
+        忽略历史版本.
+        
+        最好的远程创建方式是:  
+            1. 现在github创建远程仓库  
+            2. 拉到本地,此文件位置就会成为本地仓库  
+            3. 在此文件夹中add,push
+            
+        ***每次push操作前一定要pull!!! 养成好习惯!!!***    
+        
+    3. 常规提交代码操作  
+        **git push**  
+        提交代码  
+        ```
+        $ git push
+        Enumerating objects: 4, done.
+        Counting objects: 100% (4/4), done.
+        Delta compression using up to 8 threads
+        Compressing objects: 100% (3/3), done.
+        Writing objects: 100% (3/3), 4.21 KiB | 2.11 MiB/s, done.
+        Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+        To https://github.com/Kyrios0626/HelloCode.git
+           5fd5223..81b689c  master -> master
+        ```
     
-    *master* 代表你要提交的远程分支的名字  
-    没有分支会自动创建分支
+    4. 拉取远程仓库代码  
+        **git pull origin 远程分支**  
+        拉取远程仓库对应分支的变化代码
+        ```
+        $ git pull origin main
+        From https://github.com/Kyrios0626/HelloCode
+         * branch            main       -> FETCH_HEAD
+        Already up to date.
+        ```
+        
+    5. 常规拉取代码操作  
+        **git pull**  
+        提交代码  
+        ```
+        $ git pull
+        Already up to date.
+        ```
+    
 2. 本地没有代码,直接将远程代码克隆下来
 
     
@@ -201,16 +248,8 @@ See 'git help git' for an overview of the system.
  
     
 
+git clone 远程仓库地址  克隆一个项目    
 
-
-
-
-git push -u origin 远程分支   
-将本地分支与远程分支进行绑定,并推送代码,绑定之后,下次如果在推本地分支,可以直接使用git push 命令.  
-git clone 远程仓库地址  克隆一个项目  
-git pull origin 远程分支  拉取远程仓库对应分支的变化代码  
-
-git reset --hard 1162897 版本回退  
 
 # tag标签
     
