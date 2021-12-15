@@ -252,8 +252,26 @@
         To https://github.com/Kyrios0626/HelloCode.git
            5fd5223..81b689c  master -> master
         ```
+## 4. 撤销提交方法  
+1. **git reset 版本号**   
+    适用场景： 如果想恢复到之前某个提交的版本，且那个版本之后提交的版本我们都不要了，就可以用这种方法  
+    ```
+    $ git reset fe2945d2b44064dffb9bc57690b72c29fcf4fcaa
+    ```  
+    reset之后,add所有更改,**不要pull远程仓库**,因为你的版本已经回退了,相当于慢了远程几个版本,
+    之后直接**git push -f** 强制推送 (执行这一步之前都有后悔的余地,更推荐使用revert) 
+    
+2. **git revert 版本号**  
+    g适用场景： 比如，我们commit了三个版本（版本一、版本二、 版本三），突然发现版本二不行（如：有bug），想要撤销版本二，但又不想影响撤销版本三的提交，就可以用 git revert 命令来反做版本二，生成新的版本四，这个版本四里会保留版本三的东西，但撤销了版本二的东西。
+    ```
+    $ git revert 5b953dad993f9dfac9fd228128bf865ffd0fd939
+    [main 831d8ff] Revert "新增1" 删除提交1
+     1 file changed, 1 deletion(-)
+     delete mode 100644 1.txt
+    ```
 
-## 4. tag标签
+
+## 5. tag标签
     
     tag是git版本库的一个标记，指向某个commit的指针。
     tag主要用于发布版本的管理，一个版本发布之后，我们可以为git打上 v.1.0.1 v.1.0.2 ...这样的标签。
