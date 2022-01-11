@@ -69,6 +69,6 @@ java关键字不能作为标识符
 
 **自动类型转换**
 从低到高可以自动转换
-byte,short,char--->int--->long---->float------>double (布尔类型不可以转换)
-强制类型转换
+byte,short,char--->int--->long---->float------>double (布尔类型不可以转换)    
+强制类型转换   
 从高到低:低类型=低类型值
