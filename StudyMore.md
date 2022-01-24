@@ -29,7 +29,13 @@ GET ahhuali.com
 
 ```python
 str = '12345678'
-print str[0:1]
+print str[0:1]  # 注意是:不是,
 >> 1			# 输出str位置0开始到位置1以前的字符
+```
+
+#### 字符串删除空格
+
+```python
+a.strip()
 ```
 
