@@ -39,3 +39,8 @@ print str[0:1]  # 注意是:不是,
 a.strip()
 ```
 
+# bug解决
+
+#### selenium.common.exceptions.WebDriverException: Message: ‘chromedriver‘解决
+
+找到对应本地浏览器的chromedriver 放置到python根目录下就行了
