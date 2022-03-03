@@ -8,6 +8,47 @@
 date -R
 ```
 
+#### 查询当前服务器外网ip
+
+```linux
+clush -w crawler[001-060] 'curl -L ip.tool.lu'
+```
+
+#### 安装chromedriver
+
+```linux
+使用命令将解压后的文件复制到   /usr/local/bin/chromedriver
+命令为：sudo mv chromedriver /usr/bin/chromedriver
+改变用户权限：
+命令为：sudo chmod u+x,o+x   /usr/bin/chromedriver
+```
+
+#### 安装Miniconda3
+
+```linux
+下载包后
+bash Miniconda3-latest-Linux-x86_64.sh
+一路enter yes
+
+创建环境
+ conda create -n pyhton3 python=3.6
+其中python3为环境名称
+
+激活环境
+source activate python3
+```
+
+#### 安装chrome
+
+```linux
+yum install -y google-chrome-stable_current_x86_64_94.0.4606.81.rpm
+一路回车
+```
+
+
+
+
+
 ## Redis
 
 #### redis 切换db
@@ -22,6 +63,10 @@ SELECT 2
 ```
 GET ahhuali.com
 ```
+
+
+
+
 
 ## Python
 
@@ -39,7 +84,25 @@ print str[0:1]  # 注意是:不是,
 a.strip()
 ```
 
-# bug解决
+#### 字符串转byte
+
+```python
+s = "abc"             # string
+s = "abc".encode()    # bytes，encode默认编码方式是utf-8
+s = b"abc"            # bytes
+```
+
+#### python 批量安装所需依赖 
+
+```linux
+ pip install -r requirements.txt
+```
+
+
+
+
+
+## bug解决
 
 #### selenium.common.exceptions.WebDriverException: Message: ‘chromedriver‘解决
 
