@@ -45,6 +45,21 @@ yum install -y google-chrome-stable_current_x86_64_94.0.4606.81.rpm
 一路回车
 ```
 
+#### 安装node
+
+```linux
+https://blog.csdn.net/lh155136/article/details/111194424
+
+tar -xvf node-v16.14.2-linux-x64.tar.xz 解压缩
+
+mv /usr/local/node-v14.15.1-linux-x64 /usr/local/node 更改名称
+
+vi /etc/profile 更改环境变量
+export PATH=$PATH:/usr/local/node/bin 最后一行加上
+
+source /etc/profile 加载环境变量
+```
+
 
 
 
