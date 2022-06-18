@@ -18,9 +18,9 @@ clush -w crawler[001-060] 'curl -L ip.tool.lu'
 
 ```linux
 使用命令将解压后的文件复制到   /usr/local/bin/chromedriver
-命令为：sudo mv chromedriver /usr/bin/chromedriver
+命令为：sudo mv chromedriver /usr/local/bin/chromedriver
 改变用户权限：
-命令为：sudo chmod u+x,o+x   /usr/bin/chromedriver
+命令为：sudo chmod u+x,o+x   /usr/local/bin/chromedriver
 ```
 
 #### 安装Miniconda3
@@ -58,6 +58,23 @@ vi /etc/profile 更改环境变量
 export PATH=$PATH:/usr/local/node/bin 最后一行加上
 
 source /etc/profile 加载环境变量
+```
+
+
+
+#### 导入中文字体
+
+```linux
+mkdir -p /usr/share/fonts/chinese/        #创建中文字体目录
+
+cp songti.ttf /usr/share/fonts/chinese/     #将字体文件拷贝
+到/usr/share/fonts/chinese/中
+
+cd /usr/share/fonts/chinese/
+
+fc-cache -fv                              #为刚加入的字体设置缓存使之有效
+
+fc-list                                   #查看系统中的字体
 ```
 
 
@@ -110,7 +127,9 @@ s = b"abc"            # bytes
 #### python 批量安装所需依赖 
 
 ```linux
- pip install -r requirements.txt
+pip install pipreqs #安装依赖
+pipreqs .   # 生成依赖清单 
+pip install -r requirements.txt
 ```
 
 
