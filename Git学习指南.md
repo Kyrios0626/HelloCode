@@ -79,7 +79,7 @@
     
 #### 4. 将暂存区的改动提交,git会永久保存这次提交    
 - **git commit -m"提交信息"**  
-    
+  
     $ git commit -m "将markdown文档提交git监管"
     [master (root-commit) 5fd5223] 将markdown文档提交git监管
     1 file changed, 355 insertions(+)
@@ -94,7 +94,7 @@
     commit 5fd5223cf5596ef8c2a24f683635e0852e4fa738 (HEAD -> master)
     Author: Kyrios <354034186@qq.com>
     Date:   Thu Dec 9 11:01:49 2021 +0800
-
+    
     将markdown文档提交git监管
     ```
 2. **git reflog**   
@@ -118,9 +118,9 @@
     ```
     kyrio@DESKTOP-S9RF950 MINGW64 /e/Kyrios/code/hello_code (dev)
     $ git branch d2v
-
+    
     kyrio@DESKTOP-S9RF950 MINGW64 /e/Kyrios/code/hello_code (dev)
-
+    
     ```
 3. **git checkout -b dev**   
     创建一个名为dev的分支 并跳转到dev   
@@ -166,7 +166,7 @@
         ```
         $ git remote add origin https://github.com/Kyrios0626/HelloCode.git
         kyrio@DESKTOP-S9RF950 MINGW64 /E/Kyrios/code/hello_code (master)
-        ```   
+        ```
         *origin* 表示你自己给远程仓库起了个本地识别的名字,  
         以后git识别到origin就表示它是远程的hellow code仓库  
         所以只要起的名字不同,本地仓库的代码可以同时链接不同的远程仓库,起不一样的名就好了  
@@ -183,7 +183,7 @@
         remote: Total 19 (delta 5), reused 9 (delta 2), pack-reused 3
         Receiving objects: 100% (19/19), 12.84 KiB | 166.00 KiB/s, done.
         Resolving deltas: 100% (5/5), done.
-        ```    
+        ```
     
 2. 拉取远程仓库代码  
 
@@ -201,7 +201,7 @@
         ```
         $ git pull
         Already up to date.
-        ```    
+        ```
 3. 提交本地代码到远程仓库  
     1. **git push -u origin master**  
         将本地 ***当前*** 分支与远程 ***master*** 分支进行绑定,并推送代码  
@@ -257,7 +257,7 @@
     适用场景： 如果想恢复到之前某个提交的版本，且那个版本之后提交的版本我们都不要了，就可以用这种方法  
     ```
     $ git reset fe2945d2b44064dffb9bc57690b72c29fcf4fcaa
-    ```  
+    ```
     reset之后,add所有更改,**不要pull远程仓库**,因为你的版本已经回退了,相当于慢了远程几个版本,
     之后直接**git push -f** 强制推送 (执行这一步之前都有后悔的余地,更推荐使用revert) 
     
@@ -272,12 +272,12 @@
 
 
 ## 5. tag标签
-    
+
     tag是git版本库的一个标记，指向某个commit的指针。
     tag主要用于发布版本的管理，一个版本发布之后，我们可以为git打上 v.1.0.1 v.1.0.2 ...这样的标签。
-
+    
     tag感觉跟branch有点相似，但是本质上和分工上是不同的：
-
+    
     tag 对应某次commit, 是一个点，是不可移动的。
     branch 对应一系列commit，是很多点连成的一根线，有一个HEAD 指针，是可以依靠 HEAD 指针移动的。
     
@@ -286,7 +286,7 @@
     例如：已经发布了 v1.0 v2.0 v3.0 三个版本，
     这个时候，我突然想不改现有代码的前提下，在 v2.0 的基础上加个新功能，作为 v4.0 发布。
     就可以检出 v2.0 的代码作为一个 branch ，然后作为开发分支。
-    
+
 1. **git tag v1.0**  
     创建一个名为v1.0的标签
 2. **git tag**  
