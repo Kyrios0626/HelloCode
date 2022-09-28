@@ -31,7 +31,7 @@ bash Miniconda3-latest-Linux-x86_64.sh
 一路enter yes
 
 创建环境
- conda create -n pyhton3 python=3.6
+ conda create -n python3 python=3.6
 其中python3为环境名称
 
 激活环境
@@ -58,6 +58,26 @@ vi /etc/profile 更改环境变量
 export PATH=$PATH:/usr/local/node/bin 最后一行加上
 
 source /etc/profile 加载环境变量
+```
+
+#### 安装go
+
+```
+下载压缩包地址：https://studygolang.com/dl
+https://studygolang.com/dl/golang/go1.15.6.linux-amd64.tar.gz
+
+上传至 /usr/local/src 路径下
+解压缩  tar -C /usr/local/src -xzf go1.15.6.linux-amd64.tar.gz 
+
+配置环境变量：
+修改/etc/profile   
+添加以下内容  
+export PATH=$PATH:/usr/local/src/go/bin
+
+
+source /etc/profile
+
+go version 校验命令
 ```
 
 
@@ -88,6 +108,25 @@ chage -l root  # 查看用户密码状态
 
 ```linux
 curl --proxy "代理" "url"
+```
+
+#### ssh 远程免密登录
+
+```
+1.在Server1输入：ssh-keygen (三次提示都按回车即可)  --生成密钥
+2.在Server1输入：ssh-copy-id Server2的ip  --将密钥拷贝到要配置的服务器上
+3.配置完成，在Server1输入：ssh Server2的ip ，即可完成免密登录。
+```
+
+#### zasbbix-agent安装
+
+```
+1.rpm -Uvh https://repo.zabbix.com/zabbix/5.0/rhel/7/x86_64/zabbix-release-5.0-1.el7.noarch.rpm   #换源 不同源配置文件不同
+2.yum clean all #清理yum源
+3.yum install zabbix-agent
+4.修改/etc/zabbix/zabbix_agentd.conf
+5.systemctl restart zabbix-agent #启动
+6.systemctl enable zabbix-agent
 ```
 
 
@@ -154,3 +193,19 @@ pip install -r requirements.txt
 #### selenium.common.exceptions.WebDriverException: Message: ‘chromedriver‘解决
 
 找到对应本地浏览器的chromedriver 放置到python根目录下就行了
+
+#### pip安装依赖时 出现无法卸载
+
+pip -V 找到base环境的文件夹site-packages的绝对路径
+
+删除无法删除的依赖
+
+rm -rf ruamel*
+
+重新安装
+
+## 各种安装包
+
+#### typora-windows
+
+https://wws.lanzouj.com/iGkwhk5vpyf
