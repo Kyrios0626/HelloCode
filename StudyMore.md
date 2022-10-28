@@ -116,6 +116,9 @@ curl --proxy "代理" "url"
 1.在Server1输入：ssh-keygen (三次提示都按回车即可)  --生成密钥
 2.在Server1输入：ssh-copy-id Server2的ip  --将密钥拷贝到要配置的服务器上
 3.配置完成，在Server1输入：ssh Server2的ip ，即可完成免密登录。
+
+常见问题:REMOTE HOST IDENTIFICATION HAS CHANGED!
+ssh-keygen -R 接收方ip
 ```
 
 #### zasbbix-agent安装
@@ -127,6 +130,19 @@ curl --proxy "代理" "url"
 4.修改/etc/zabbix/zabbix_agentd.conf
 5.systemctl restart zabbix-agent #启动
 6.systemctl enable zabbix-agent
+```
+
+#### 关机
+
+```
+shutdown -h now
+```
+
+#### 更改主机名
+
+```
+修改/etc/hostname
+sudo hostname <新主机名>
 ```
 
 
