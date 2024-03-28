@@ -21,6 +21,8 @@ clush -w crawler[001-060] 'curl -L ip.tool.lu'
 命令为：sudo mv chromedriver /usr/local/bin/chromedriver
 改变用户权限：
 命令为：sudo chmod u+x,o+x   /usr/local/bin/chromedriver
+
+https://googlechromelabs.github.io/chrome-for-testing/
 ```
 
 #### 安装Miniconda3
@@ -30,6 +32,8 @@ clush -w crawler[001-060] 'curl -L ip.tool.lu'
 bash Miniconda3-latest-Linux-x86_64.sh
 一路enter yes
 
+进入到cd /root/miniconda3/bin/ 执行source activate
+
 创建环境
  conda create -n python3 python=3.6
 其中python3为环境名称
@@ -38,10 +42,35 @@ bash Miniconda3-latest-Linux-x86_64.sh
 source activate python3
 ```
 
+#### 切换centos 自带python版本
+
+```
+# 先安装需要的python版本 参考上一步miniconda
+# 备份原有python软连接
+mv /usr/bin/python /usr/bin/python.bak
+# 添加新的软连接
+ln -s /root/miniconda3/envs/python3/bin/python3.6 /usr/bin/python
+# 添加pip 软连接
+ln -s /root/miniconda3/envs/python3/bin/pip3 /usr/bin/pip
+
+# yum有时候引用不到python 主动引用到python2
+vi /usr/bin/yum 引用python2
+vi /usr/libexec/urlgrabber-ext-down 引用python2
+
+# 禁用conda自动启动环境
+conda config --set auto_activate_base false
+```
+
+#### 切换pip源
+
+```
+pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+```
+
 #### 安装chrome
 
 ```linux
-yum install -y google-chrome-stable_current_x86_64_94.0.4606.81.rpm
+yum install -y google-chrome-stable_current_x86_64.rpm
 一路回车
 ```
 
@@ -78,6 +107,12 @@ export PATH=$PATH:/usr/local/src/go/bin
 source /etc/profile
 
 go version 校验命令
+```
+
+#### 安装JAVA
+
+```
+https://blog.csdn.net/wcy1900353090/article/details/125121855
 ```
 
 
@@ -145,9 +180,23 @@ shutdown -h now
 sudo hostname <新主机名>
 ```
 
+#### 磁盘占用清理
 
+```
+df-h 看磁盘占用
 
+du -sh * 查看当前路径各文件大小
 
+lsof -n |grep deleted|awk '{print $2}'|xargs kill -9
+
+https://blog.csdn.net/qq_34899961/article/details/108387493
+```
+
+#### 磁盘挂载
+
+```
+https://blog.csdn.net/u012581020/article/details/131244002
+```
 
 ## Redis
 
@@ -197,7 +246,12 @@ s = b"abc"            # bytes
 ```linux
 pip install pipreqs #安装依赖
 pipreqs .   # 生成依赖清单 
+或者
+pip freeze > requirements.txt
+
 pip install -r requirements.txt
+
+
 ```
 
 
@@ -225,3 +279,10 @@ rm -rf ruamel*
 #### typora-windows
 
 https://wws.lanzouj.com/iGkwhk5vpyf
+
+## mongo
+
+启动命令 ：mongod --dbpath D:\mongodb-win32-x86_64-windows-6.0.5\data
+
+
+
